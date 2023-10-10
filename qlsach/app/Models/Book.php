@@ -20,6 +20,10 @@ class Book extends Model
         'category_id'
     ];
 
+    public function __construct(array $attributes = []){
+        parent::__construct($attributes);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'id', 'category_id');

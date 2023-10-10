@@ -9,11 +9,11 @@ class ConcreteLibraryFactory implements LibraryFactory {
     public function create($type, array $data) {
         switch ($type) {
             case 'book':
-                return Book::create($data);
+                return new Book($data);
             case 'reader':
-                return Reader::create($data);
+                return new Book($data);
             case 'category':
-                return Category::create($data);
+                return new Book($data);
             default:
                 throw new \InvalidArgumentException('Invalid object type');
         }

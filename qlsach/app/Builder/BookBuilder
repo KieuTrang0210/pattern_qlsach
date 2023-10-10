@@ -1,0 +1,48 @@
+<?php
+namespace App\Builder;
+use App\Models\Book;
+
+class BookBuilder {
+    public $book;
+
+    public function __construct()
+    {
+        $this->book = new Book();
+    }
+
+
+    public function setTitle($title){
+        $this->book->title = $title;
+        return $this;
+    }
+
+    public function setAuthor($author)
+    {
+        $this->book->author = $author;
+        return $this;
+    }
+
+    public function setPublishedDate($publishedDate)
+    {
+        $this->book->published_date = $publishedDate;
+        return $this;
+    }
+
+    public function setCategory($category)
+    {
+        $this->book->category = $category;
+        return $this;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->book->quantity = $quantity;
+        return $this;
+    }
+
+    public function build()
+    {
+        return $this->book;
+    }
+    
+}

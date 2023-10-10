@@ -17,6 +17,10 @@ class Reader extends Model
         'phone'
     ];
 
+    public function __construct(array $attributes = []){
+        parent::__construct($attributes);
+    }
+    
     public function loans()
     {
         return $this->hasMany(Loan::class);

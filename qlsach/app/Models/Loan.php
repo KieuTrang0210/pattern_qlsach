@@ -20,6 +20,10 @@ class Loan extends Model
         'returned_at'
     ];
 
+    public function __construct(array $attributes = []){
+        parent::__construct($attributes);
+    }
+    
     public function book()
     {
         return $this->belongsTo(Book::class);

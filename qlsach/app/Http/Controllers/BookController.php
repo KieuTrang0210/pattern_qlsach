@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Factories\LibraryFactory;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Database\DatabaseConnectionManager;
 use Illuminate\Support\Facades\Validator;
@@ -55,8 +56,9 @@ class BookController extends Controller
         $data['published_date'] = date('Y-m-d', strtotime($data['published_date']));
 
         $book = $this->libraryFactory->create("book", $data);
+        $book->save();
 
-        if($book) {
+        if($book instanceof Book) {
             return redirect()->route('books.index')->with('success', 'Create success!');
         } else {
             return redirect()->route('books.create')->with('error', 'Create failed!');
