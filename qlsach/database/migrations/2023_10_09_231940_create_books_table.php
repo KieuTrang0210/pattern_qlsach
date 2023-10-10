@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('author');
             $table->date('published_date');
             $table->integer('quantity')->default(0);
-            $table->timestamps();
+            $table->unsignedBigInteger('category_id');
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

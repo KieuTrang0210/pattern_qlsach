@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('borrowed_at'); 
             $table->dateTime('due_at');  // thời điểm trả sách dự kiến
             $table->dateTime('returned_at')->nullable();  // thời điểm trả sách thực tế
-            $table->timestamps();
+  
 
             $table->foreign('reader_id')->references('id')->on('readers')->onDelete('cascade');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
