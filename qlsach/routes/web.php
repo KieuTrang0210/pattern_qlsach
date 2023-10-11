@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/books/index', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
 Route::post('/books/store', [BookController::class, 'store'])->name('books.store');
+Route::get('/books/category/{category_id}', [BookController::class, 'filterByCategory'])->name('books.filterByCategory');
+Route::delete('/books/{id}', [BookController::class, 'delete'])->name('books.delete');
+

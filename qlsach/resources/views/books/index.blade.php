@@ -18,8 +18,24 @@
 
         <!-- Title -->
         <div class="d-flex align-items-center">
-            <h3 class="text-center text-success my-3">Books Management</h3>
+            <a href="{{route('books.index')}}" class="py-3 fs-2 fw-bolder text-dark text-decoration-none">Book Management</a>
             <a href="{{ route('books.create') }}" class="btn btn-success ms-auto"> <i class="bi bi-plus-lg"></i> Add New Book</a>
+        </div>
+
+        <div class="filter_category">
+            <div class="row">
+                <div class="col-md-2 text-end my-auto">
+                    <label for="filter">Filter by category:</label>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" name="category_id" id="category_id" onchange="window.location.href = '/books/category/' + this.value">
+                        <option selected>--None--</option>
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}" @if(isset($selectedCategory) && $category->id == $selectedCategory->id) selected @endif>{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         </div>
 
         <!-- Bảng hiển thị danh sách-->
@@ -48,7 +64,7 @@
                         
                         <td class="d-flex justify-content-center gap-2">
                             <a href="#" class="btn btn-warning"> <i class="bi bi-pencil-fill"></i> </a>
-                            <form action="#" method="post">
+                            <form action="{{ route('books.delete', ['id' => $book->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger text-dark" onclick="return confirm('Are you sure you want to delete?')">  <i class="bi bi-trash3-fill"></i>  </button>
